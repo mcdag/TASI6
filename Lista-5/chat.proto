@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package chatPackage;
+
+service Chat {
+  rpc connect(Message) returns (stream Message){};
+  rpc send(Message) returns (Void);
+}
+
+message Message {
+  string username = 1;
+  string message = 2;
+}
+
+message Void {}
