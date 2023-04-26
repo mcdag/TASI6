@@ -31,10 +31,22 @@ server.addService(chatPackage.Chat.service, {
     }
   },
   send: (call, callback) => {
-    users.forEach(user => {
-      if(call.request.username != user.request.username){
-        user.write({ username: `${call.request.username}`, message: `${call.request.message}`});
-      }
-    })
+    if(call.request.message == "."){
+      let newUsers = users.filter(user => user.request.username != call.request.username);
+      users = newUsers;
+      
+      users.forEach(user => {
+        if(call.request.username != user.request.username){
+          user.write({ username: `${call.request.username}`, message: "* desconectou-se *"});
+        }
+      })
+      call.end();
+    } else {
+      users.forEach(user => {
+        if(call.request.username != user.request.username){
+          user.write({ username: `${call.request.username}`, message: `${call.request.message}`});
+        }
+      })
+    }
   },
 });

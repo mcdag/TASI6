@@ -16,21 +16,29 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-console.log("Digite seu nome!");
-let user = "";
+console.log("Bem-vindo ao Bato-papo UOL!!!! \n Digite seu nome para se conectar! \n E digite '.' para se descontectar!");
+let user = "", chat;
+let connected = false;
 
 rl.addListener('line', line => {
   if(user == ""){
-    let chat = client.connect({username: line, message: ""});
+    chat = client.connect({username: line, message: ""}, (err, response) => {});
+    connected = true;
+    user = line;
 
     chat.on('data', (data) => {
-      if(user == ""){
-        console.log(`${data.message} pessoa(s) online!`)
-      } else {
+      if(data.username == ""){
+        console.log(`* ${data.message} pessoa(s) está(ão) online *`);
+      } else if(data.username != user){
         console.log(`${data.username}: ${data.message}`);
       }
-      user = line;
     })
+  } else if (connected) {
+    client.send({ username: user, message: line}, (err, response) => {});
+    if(line == "."){
+      connected = false;
+      console.log("Você desconectou-se do chat! \n Bem-vindo ao Bato-papo UOL!!!! \n Digite seu nome para se conectar! \n E digite '.' para se descontectar!");
+      user = "";
+    }
   }
-  client.send({ username: user, message: line}, (err, response) => {});
 });
