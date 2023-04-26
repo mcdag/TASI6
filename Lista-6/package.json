@@ -1,0 +1,23 @@
+{
+  "name": "lista-6",
+  "version": "1.0.0",
+  "description": "http rest client-server",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon ./server.js",
+    "client": "nodemon ./client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcdag/TASI6.git"
+  },
+  "author": "mcdag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcdag/TASI6/issues"
+  },
+  "homepage": "https://github.com/mcdag/TASI6#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

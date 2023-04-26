@@ -1,0 +1,17 @@
+{
+  "segunda":
+  [
+    {
+      "tarefa": "Fazer exercício de gRPC", "done": true
+    }
+  ] ,
+  "terça":
+  [
+    {
+      "tarefa": "Ver tutorial de Node.js sobre HTTP e REST", "done": false
+    },
+    {
+      "tarefa": "Fazer exercício sobre HTTP e REST", "done": false
+    }
+  ]
+}
