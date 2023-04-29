@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "server": "nodemon ./sse-server.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

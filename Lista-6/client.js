@@ -11,7 +11,8 @@ const days = ['domingo', 'segunda','terça', 'quarta','quinta', 'sexta', 'sábad
 let id, tarefa;
 
 rl.addListener('line', line => {
-  let data = line.split(" ");
+  let data = line.split(/\s+/).join('');
+  data = data.split("-");
   switch (data[0]) {
     case '1':
       fetch('http://localhost:3000/agenda', { method: 'GET' }).then((response) => {
